@@ -138,11 +138,11 @@ class: center, middle
 
 --
 
--_Standardized bias_ tells us if centrality measures are over- or underestimated.
+-_Standardized bias_ tells us if centrality measures are over or underestimated.
 
 --
 
--a_multilevel metamodel_ tells us the relationship between the conditions (number of nodes, percentage of connection, and sample size) and our estimates
+-a_multilevel metamodel_ tells us the relationship between the conditions (number of nodes, percentage of connection, and sample size) and our estimates.
 
 --
 
@@ -151,3 +151,64 @@ class: center, middle
 
 
 -We also limited our assessment to those points that were the minimum distance from the minimum, maximum, and mean of the true values.]
+
+---
+class: center, middle
+#Results: Percentage .4 for mean 
+
+```{r result_graph, echo = FALSE, warning = FALSE, message = FALSE}
+selection <- read.csv("D:\\Lindley Backup\\Thesis\\selection.csv", header = TRUE)
+###Make graph of standardized bias
+###Label facets
+n.labs <- c("Sample size 274", "Sample size 802",
+            "Sample size 2654", "Sample size 34653")
+names(n.labs) <- c(274, 802, 2654, 34653)
+file.labs <- c("Degree", "Betweenness", "Closeness", "Eigenvector")
+names(file.labs) <- c("degree", "between", "close", "eigen")
+
+library(tidyverse)
+
+
+###Graph for mean
+selection %>%
+  filter(con_per == 0.4 & use.this.mean == 1) %>%
+  ggplot(aes(x= factor(con_nodes, levels=c('7', '12', '20', '36', '57')), y = stnd_bias, fill = con_nodes)) +
+  geom_col() +
+  facet_wrap(~con_n + file_name, labeller = labeller(con_n = n.labs, file_name = file.labs)) +
+  labs(x = "Number of nodes", y = "Standardized bias") +
+  ylim(-35, 30)
+
+```
+
+---
+
+#Results: MLM
+
+-_Degree_: Nodes x Percentage interaction
+
+
+-_Betweenness_: Main effects of nodes and sample size and Nodes x Sample size interaction
+
+
+-_Closeness_: Main effects of nodes, percentage, and sample size and Interactions of Nodes x Sample Size and Percentage x Sample size (for mean and maximum)
+
+
+-_Eigenvector_: None significant
+
+---
+#Conclusion
+
+-Utilizing EBIC glasso with nonnormal data results in underestimating true values.
+
+-Future research should concentrate on assessing the adequacy of the use of nonparanormal transformation, diversifying centrality measures, and assessing nonnormality generality, not particular conditions under nonnormality.
+
+---
+#Thank you!
+
+.pull-left[
+ ![Mr. Chauncey Beans Bojangles](Bo.jpg)
+]
+
+.pull-right[
+![Licorice & Minnie](Min_Lic.jpg)
+]

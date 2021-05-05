@@ -4,7 +4,7 @@
     <title>The robustness of EBIC glasso to distributional misspecification</title>
     <meta charset="utf-8" />
     <meta name="author" content="Lindley R. Slipetz" />
-    <meta name="date" content="2021-05-03" />
+    <meta name="date" content="2021-05-05" />
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
@@ -14,7 +14,7 @@ class: center, middle, inverse, title-slide
 # The robustness of EBIC glasso to distributional misspecification
 ### Lindley R. Slipetz
 ### Wake Forest University
-### May 03, 2021
+### May 05, 2021
 
 ---
 
@@ -137,11 +137,11 @@ class: center, middle
 
 --
 
--_Standardized bias_ tells us if centrality measures are over- or underestimated.
+-_Standardized bias_ tells us if centrality measures are over or underestimated.
 
 --
 
--a_multilevel metamodel_ tells us the relationship between the conditions (number of nodes, percentage of connection, and sample size) and our estimates
+-a_multilevel metamodel_ tells us the relationship between the conditions (number of nodes, percentage of connection, and sample size) and our estimates.
 
 --
 
@@ -150,6 +150,45 @@ class: center, middle
 
 
 -We also limited our assessment to those points that were the minimum distance from the minimum, maximum, and mean of the true values.]
+
+---
+class: center, middle
+#Results: Percentage .4 for mean 
+
+![](Portfolio_8_files/figure-html/result_graph-1.png)&lt;!-- --&gt;
+
+---
+
+#Results: MLM
+
+-_Degree_: Nodes x Percentage interaction
+
+
+-_Betweenness_: Main effects of nodes and sample size and Nodes x Sample size interaction
+
+
+-_Closeness_: Main effects of nodes, percentage, and sample size and Interactions of Nodes x Sample Size and Percentage x Sample size (for mean and maximum)
+
+
+-_Eigenvector_: None significant
+
+---
+#Conclusion
+
+-Utilizing EBIC glasso with nonnormal data results in underestimating true values.
+
+-Future research should concentrate on assessing the adequacy of the use of nonparanormal transformation, diversifying centrality measures, and assessing nonnormality generality, not particular conditions under nonnormality.
+
+---
+#Thank you!
+
+.pull-left[
+ ![Mr. Chauncey Beans Bojangles](Bo.jpg)
+]
+
+.pull-right[
+![Licorice &amp; Minnie](Min_Lic.jpg)
+]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
